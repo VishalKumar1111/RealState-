@@ -1,3 +1,3 @@
 package com.rlogixx.realstate.Property
 
-class AdapterItem (val image:Int,val detail:String)
+data class AdapterItem (val image:Int,val detail:String)
