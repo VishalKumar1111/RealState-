@@ -1,14 +1,16 @@
 package com.rlogixx.realstate.Property
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.rlogixx.realstate.R
 
-class PropertyAdapter(private val foodList:ArrayList<AdapterItem>):RecyclerView.Adapter<PropertyAdapter.FoodViewHolder>() {
+class PropertyAdapter(private var context: Context, private val arrList: List<FlatDataItem>?):RecyclerView.Adapter<PropertyAdapter.FoodViewHolder>() {
 
    var onItemClickListener:((AdapterItem)->Unit)? =null
     class FoodViewHolder(itemview:View):RecyclerView.ViewHolder(itemview){
@@ -23,7 +25,10 @@ class PropertyAdapter(private val foodList:ArrayList<AdapterItem>):RecyclerView.
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
-        val food=foodList[position]
+     Glide.with(context).load(arrList!!.get(position).files).into(holder.imageView)
+        holder.textview.text = arrList!![position].section
+
+        /*   val food=foodList[position]
         holder.imageView.setImageResource(food.image)
         holder.textview.text=food.detail
        // holder.textview.text=food.des
@@ -31,9 +36,13 @@ class PropertyAdapter(private val foodList:ArrayList<AdapterItem>):RecyclerView.
              onItemClickListener?.invoke(food)
 
         }
+
+      */
     }
 
     override fun getItemCount(): Int {
-        return foodList.size
+        return arrList!!.size
     }
+
+
 }
