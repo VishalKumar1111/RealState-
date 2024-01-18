@@ -13,7 +13,7 @@ data class FlatDataItem(
 
 //    val id: Int,
 //    val imagestring: String,
-//    val landmark: String,
+    val landmark: String,
 //    val latitude: Double,
 //    val longitude: Double,
 //    val pincode: Int,

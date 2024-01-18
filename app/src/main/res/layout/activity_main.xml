@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/base"
+    >
+
+
 
     <TextView
         android:id="@+id/textView"
@@ -25,36 +29,37 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="59dp"
-        android:src="@drawable/img"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
+        android:src="@drawable/buy"
+        app:layout_constraintEnd_toEndOf="@+id/edUserName"
+        app:layout_constraintStart_toStartOf="@+id/edUserName"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/edUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
-        android:ems="10"
-        android:hint="Enter Username"
+        android:ems="13"
+
+        android:text="propertyagent@gmail.com"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/edPassWord"
+        app:layout_constraintStart_toStartOf="@+id/edPassWord"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/edPassWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
-        android:ems="10"
-        android:hint="Enter Password"
+        android:ems="13"
+        android:text="password"
         android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/edUserName" />
 
     <Button
         android:id="@+id/button"
@@ -64,7 +69,7 @@
         android:text="Login"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/edPassWord" />
 
     <TextView
         android:id="@+id/textView2"

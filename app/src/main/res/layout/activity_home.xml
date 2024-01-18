@@ -38,11 +38,11 @@
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="333dp"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:layout_marginTop="26dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text="Search"
         app:layout_constraintStart_toStartOf="@+id/scrollView3"
         app:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
@@ -60,12 +60,12 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="398dp"
-        android:layout_height="400dp"
-        android:layout_margin="10dp"
+        android:layout_height="425dp"
+        android:layout_margin="3dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,8 +77,8 @@
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="58dp"
                 android:layout_marginTop="61dp"
                 android:layout_marginEnd="43dp"
@@ -86,7 +86,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/img" />
+                android:src="@drawable/pg" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -127,13 +127,13 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="10dp"
 
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
-                android:src="@drawable/img" />
+                android:src="@drawable/buy" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -148,15 +148,15 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="54dp"
                 android:layout_marginTop="61dp"
 
                 app:layout_constraintEnd_toEndOf="@+id/textView8"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/img" />
+                android:src="@drawable/rent" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -174,12 +174,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="305dp"
-                android:text="Start With"
+                android:text="1 BHK"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView11"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
             <TextView
@@ -188,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="267dp"
-                android:text="Select One Of These"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/recyclerView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -209,12 +208,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="305dp"
-                android:text="Start With"
+
+                android:text="2 BHK"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/recyclerView2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/recyclerView2"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
 
             <TextView
@@ -223,7 +222,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="267dp"
-                android:text="Select One Of These"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView12"
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
@@ -233,12 +231,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:layout_marginEnd="10dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/textView13"
+                app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 BHK"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="4dp"
+                tools:layout_editor_absoluteY="571dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView3"
+                />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="267dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView14"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                app:layout_constraintStart_toStartOf="@+id/textView15"
+                app:layout_constraintTop_toBottomOf="@+id/textView15"
+                />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

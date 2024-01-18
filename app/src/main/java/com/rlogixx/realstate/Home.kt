@@ -1,14 +1,18 @@
 package com.rlogixx.realstate
 
-import android.content.Context
+import android.content.Intent
+import com.rlogixx.realstate.API.ApiInterface
 import android.os.Bundle
 import android.util.Log
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.rlogixx.realstate.Detail.DetailedActivity
 import com.rlogixx.realstate.Property.AdapterItem
 import com.rlogixx.realstate.Property.FlatDataItem
 import com.rlogixx.realstate.Property.PropertyAdapter
@@ -25,6 +29,7 @@ class Home : AppCompatActivity() {
     lateinit var courseRVAdapter: PropertyAdapter
     lateinit var courseList: ArrayList<AdapterItem>
     lateinit var courseRV2: RecyclerView
+    lateinit var courseRV3: RecyclerView
     lateinit var courseRVAdapter2: PropertyAdapter
     lateinit var courseList2: ArrayList<AdapterItem>
     val imageList = ArrayList<SlideModel>()
@@ -34,14 +39,8 @@ class Home : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
 
-//IMAGE SLIDER
-        imageList.add(SlideModel(R.drawable.img))
-        imageList.add(SlideModel(R.drawable.img))
-        imageList.add(SlideModel(R.drawable.img))
 
-//        val imageSlider = findViewById<ImageSlider>(R.id.image_slider)
-        //imageSlider.setImageList(imageList)
-
+//        val progress : ProgressBar =findViewById(R.id.progressBar2)
 //RECYCLERVIEW2 ADAPTER
 
         courseRV = findViewById(R.id.recyclerView2)
@@ -49,10 +48,12 @@ class Home : AppCompatActivity() {
         getAllData()
 //        courseList = ArrayList()
 //
-//
-        val layoutManager = GridLayoutManager(this, 2)
+        val layoutManager = LinearLayoutManager(this@Home,LinearLayoutManager.HORIZONTAL,true)
+      //  val layoutManager = GridLayoutManager(this, 2)
 
          courseRV.layoutManager = layoutManager
+
+
 //
 //
 //        courseRVAdapter = PropertyAdapter(courseList)
@@ -70,8 +71,14 @@ class Home : AppCompatActivity() {
 //        courseRVAdapter.notifyDataSetChanged()
 
 //RECYCLERVIEW3 ADAPTER
-
+        val layoutManager2 = LinearLayoutManager(this@Home,LinearLayoutManager.HORIZONTAL,true)
         courseRV2 = findViewById(R.id.recyclerView3)
+        courseRV2.layoutManager = layoutManager2
+
+        val layoutManager3 = LinearLayoutManager(this@Home,LinearLayoutManager.HORIZONTAL,true)
+        courseRV3 = findViewById(R.id.recyclerView4)
+        courseRV3.layoutManager = layoutManager3
+
 
 
 //        courseList2 = ArrayList()
@@ -114,7 +121,8 @@ class Home : AppCompatActivity() {
             .create(ApiInterface::class.java)
         var retroData = retrofit.getPropertyData()
 
-//        retroData.enqueue(object :Callback<List<FlatDataItem>>{})
+
+
 
         retroData.enqueue(object: Callback<List<FlatDataItem>>{
             override fun onResponse(
@@ -126,7 +134,11 @@ class Home : AppCompatActivity() {
 
                 if (data != null){
 
+
                     val bannerItems = data.filter { it.section == "banner" }
+                    val oneBhk = data.filter { it.section == "1bhk"  }
+                    val twoBhk = data.filter { it.section == "2bhk" }
+                    val threeBhk = data.filter { it.section == "3bhk" }
 
                     if (bannerItems.isNotEmpty()) {
                         val imageSlider: ImageSlider = findViewById<ImageSlider>(R.id.image_slider)
@@ -139,11 +151,49 @@ class Home : AppCompatActivity() {
 
                         Log.e("Banner", "No items with the 'banner' section found.")
                     }
+                    if (oneBhk.isNotEmpty()){
+                        Log.d("data",data.toString())
+                        courseRVAdapter = PropertyAdapter(baseContext,oneBhk)
+                        courseRV.adapter = courseRVAdapter
+
+                        courseRVAdapter.onItemClick = {
+                            startActivity(Intent(this@Home,DetailedActivity::class.java))
+
+                        }
+                    }else {
+                        Log.e("onebhk","No Images Found")
+                    }
+                    if (twoBhk.isNotEmpty()){
+                        Log.d("data",data.toString())
+                        courseRVAdapter = PropertyAdapter(baseContext,twoBhk)
+                        courseRV2.adapter = courseRVAdapter
+
+                    }else {
+                        Log.e("twobhk","No Images Found")
+                    }
+
+                    if (threeBhk.isNotEmpty()){
+                        Log.d("data",data.toString())
+                        courseRVAdapter = PropertyAdapter(baseContext,threeBhk)
+                        courseRV3.adapter = courseRVAdapter
+//                        courseRVAdapter.onItemClickListener?.let {
+//                            val intent = Intent(this@Home,DetailedActivity::class.java)
+//                            startActivity(intent)
+//
+//                        }
+
+                    }else {
+                        Log.e("twobhk","No Images Found")
+                    }
+
+
+
+
 
                 }
-                Log.d("data",data.toString())
-                courseRVAdapter = PropertyAdapter(baseContext,data)
-                courseRV.adapter = courseRVAdapter
+//                Log.d("data",data.toString())
+//                courseRVAdapter = PropertyAdapter(baseContext,data)
+//                courseRV.adapter = courseRVAdapter
 
             }
 
@@ -151,5 +201,7 @@ class Home : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+
+
     }
 }

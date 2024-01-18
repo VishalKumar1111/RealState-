@@ -1,4 +1,4 @@
-package com.rlogixx.realstate
+package com.rlogixx.realstate.API
 
 
 import com.rlogixx.realstate.Property.AdapterItem
