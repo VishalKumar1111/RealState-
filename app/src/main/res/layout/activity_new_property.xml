@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewProperty.NewProperty">
+
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:background="#651FFF"
+        android:gravity="center"
+        android:text="Raise a Request"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgcontact"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        app:srcCompat="@drawable/user" />
+
+    <EditText
+        android:id="@+id/ed_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/imgcontact"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+    <EditText
+        android:id="@+id/ed_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Contact"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/img_phone"
+        app:layout_constraintTop_toBottomOf="@+id/ed_contact" />
+
+    <ImageView
+        android:id="@+id/img_phone"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgcontact"
+        app:srcCompat="@drawable/phone" />
+
+    <EditText
+        android:id="@+id/ed_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/img_home"
+        app:layout_constraintTop_toBottomOf="@+id/ed_phone" />
+
+    <ImageView
+        android:id="@+id/img_home"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_phone"
+        app:srcCompat="@drawable/home" />
+
+    <EditText
+        android:id="@+id/ed_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/img_search"
+        app:layout_constraintTop_toBottomOf="@+id/ed_home" />
+
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_home"
+        app:srcCompat="@drawable/search" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="30dp"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_search" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="333dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="26dp"
         android:ems="10"
         android:inputType="text"
@@ -105,12 +105,11 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="305dp"
                 android:text="Start With"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,10 +117,8 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="267dp"
+                android:layout_marginStart="12dp"
                 android:text="Select One Of These"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -285,4 +282,15 @@
 
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/btn_plus"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:background="@android:drawable/ic_input_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

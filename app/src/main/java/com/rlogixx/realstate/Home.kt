@@ -4,6 +4,7 @@ import android.content.Intent
 import com.rlogixx.realstate.API.ApiInterface
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,6 +14,7 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.rlogixx.realstate.Detail.DetailedActivity
+import com.rlogixx.realstate.NewProperty.NewProperty
 import com.rlogixx.realstate.Property.AdapterItem
 import com.rlogixx.realstate.Property.FlatDataItem
 import com.rlogixx.realstate.Property.PropertyAdapter
@@ -37,7 +39,10 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        val plus:Button = findViewById(R.id.btn_plus)
+        plus.setOnClickListener {
+            startActivity(Intent(this,NewProperty::class.java))
+        }
 
 
 //        val progress : ProgressBar =findViewById(R.id.progressBar2)

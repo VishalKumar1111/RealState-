@@ -209,5 +209,15 @@
         app:layout_constraintStart_toEndOf="@+id/imageView13"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
+    <ImageView
+        android:id="@+id/img_threesixty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        class = "com.google.android.gms.maps.SupportMapFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
+        app:srcCompat="@drawable/threesixty" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

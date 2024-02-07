@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RealState</string>
+    <string name="google_map_api_key">AIzaSyDG2Sr6fAo9VyNJup1tG6Kt3kG8b-o2w7k</string>
 </resources>

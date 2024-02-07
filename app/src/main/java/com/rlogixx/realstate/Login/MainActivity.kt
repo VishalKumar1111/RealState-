@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.rlogixx.realstate.API.ApiInterface
 import com.rlogixx.realstate.Home
 import com.rlogixx.realstate.R
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 //                startActivity(Intent(this, Home::class.java))
 
             } else {
+                //failed
                 Toast.makeText(this, "Enter a valid Email", Toast.LENGTH_SHORT).show()
             }
 
@@ -92,7 +94,16 @@ class MainActivity : AppCompatActivity() {
                     if (errorBody != null) {
                         Log.e("loginerror",errorBody)
                     }
-                    Toast.makeText(this@MainActivity,errorBody,Toast.LENGTH_LONG).show()
+                    val builder = AlertDialog.Builder(this@MainActivity)
+                    builder.setTitle("Error")
+                    builder.setMessage("Login Failed. Please check Your credential")
+                    builder.setPositiveButton("OK") { dialog, which ->
+                        // handle OK button click
+                    }
+                    val dialog = builder.create()
+                    dialog.show()
+
+//                    Toast.makeText(this@MainActivity,errorBody,Toast.LENGTH_LONG).show()
                     // Log or handle the errorBody
                 }
             }
