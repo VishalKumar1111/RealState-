@@ -143,6 +143,10 @@ class Home : AppCompatActivity() {
                     val bannerItems = data.filter { it.section == "banner" }
                     val oneBhk = data.filter { it.section == "1bhk"  }
                     val twoBhk = data.filter { it.section == "2bhk" }
+
+
+//                    val twoBhkFiltered = twoBhk.filter { !it.files.endsWith(".jpg") }
+//                    Log.i("twobHKfiltered",twoBhkFiltered.toString())
                     val threeBhk = data.filter { it.section == "3bhk" }
 
                     if (bannerItems.isNotEmpty()) {
@@ -158,6 +162,7 @@ class Home : AppCompatActivity() {
                     }
                     if (oneBhk.isNotEmpty()){
                         Log.d("data",data.toString())
+
                         courseRVAdapter = PropertyAdapter(baseContext,oneBhk)
                         courseRV.adapter = courseRVAdapter
 
@@ -170,7 +175,10 @@ class Home : AppCompatActivity() {
                     }
                     if (twoBhk.isNotEmpty()){
                         Log.d("data",data.toString())
-                        courseRVAdapter = PropertyAdapter(baseContext,twoBhk)
+                        val twoBhkFiltered = twoBhk.filter { it.files?.startsWith("https") == true }
+
+                        Log.i("twobhkfilter",twoBhkFiltered.toString())
+                        courseRVAdapter = PropertyAdapter(baseContext,twoBhkFiltered)
                         courseRV2.adapter = courseRVAdapter
 
                     }else {
@@ -179,7 +187,9 @@ class Home : AppCompatActivity() {
 
                     if (threeBhk.isNotEmpty()){
                         Log.d("data",data.toString())
-                        courseRVAdapter = PropertyAdapter(baseContext,threeBhk)
+                        val threeBhkFiltered = threeBhk.filter { it.files?.startsWith("https") == true }
+
+                        courseRVAdapter = PropertyAdapter(baseContext,threeBhkFiltered)
                         courseRV3.adapter = courseRVAdapter
 //                        courseRVAdapter.onItemClickListener?.let {
 //                            val intent = Intent(this@Home,DetailedActivity::class.java)

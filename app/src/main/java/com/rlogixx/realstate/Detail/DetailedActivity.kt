@@ -1,5 +1,6 @@
 package com.rlogixx.realstate.Detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -12,7 +13,7 @@ class DetailedActivity : AppCompatActivity() {
 
         val threesixy = findViewById<ImageView>(R.id.img_threesixty)
         threesixy.setOnClickListener {
-
+            startActivity(Intent(this,ThreeSixtyView::class.java))
         }
     }
 }

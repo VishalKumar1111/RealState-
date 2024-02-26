@@ -8,34 +8,89 @@
     tools:context=".Detail.DetailedActivity">
 
     <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="59dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView15"
+        app:srcCompat="@drawable/airport" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="18dp"
+        android:text="Just 15 minutes from Airport"
+        app:layout_constraintStart_toEndOf="@+id/imageView16"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="59dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14"
+        app:srcCompat="@drawable/metro" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="20dp"
+        android:text="Metro station is 10 minutes walking distance"
+        app:layout_constraintStart_toEndOf="@+id/imageView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <ImageView
         android:id="@+id/imageView9"
         android:layout_width="61dp"
         android:layout_height="50dp"
-        android:layout_marginStart="19dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="@+id/imageView8"
-        app:srcCompat="@drawable/buy" />
+        app:srcCompat="@drawable/water1" />
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="61dp"
         android:layout_height="50dp"
-        android:layout_marginStart="19dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView9"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="@+id/imageView9"
-        app:srcCompat="@drawable/buy" />
+        app:srcCompat="@drawable/parking" />
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="61dp"
         android:layout_height="50dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView10"
         app:layout_constraintStart_toEndOf="@+id/imageView10"
         app:layout_constraintTop_toTopOf="@+id/imageView10"
-        app:srcCompat="@drawable/buy" />
+        app:srcCompat="@drawable/park" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="61dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11"
+        app:srcCompat="@drawable/gym" />
 
     <TextView
         android:id="@+id/textView3"
@@ -76,11 +131,11 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="389dp"
+        android:layout_width="match_parent"
         android:layout_height="172dp"
-        android:layout_marginStart="11dp"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="11dp"
+        android:layout_marginEnd="18dp"
         android:src="@drawable/dummy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:text="Lorem ipsum"
         app:layout_constraintStart_toStartOf="@id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
@@ -102,7 +157,7 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="8dp"
         android:text="Lorem Ipsum is Simoly Dummy Text"
         app:layout_constraintStart_toStartOf="@id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -123,7 +178,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="17dp"
         android:text="Basic Need"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@id/textView20"
@@ -144,10 +199,11 @@
         android:id="@+id/imageView8"
         android:layout_width="61dp"
         android:layout_height="50dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21"
-        app:srcCompat="@drawable/buy" />
+        app:srcCompat="@drawable/power" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -157,7 +213,7 @@
         android:layout_marginTop="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22"
-        app:srcCompat="@drawable/img" />
+        app:srcCompat="@drawable/stethoscope" />
 
     <TextView
         android:id="@+id/textView23"
@@ -174,18 +230,18 @@
         android:layout_width="59dp"
         android:layout_height="39dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView13"
-        app:srcCompat="@drawable/img" />
+        app:srcCompat="@drawable/market" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="29dp"
-        android:text="Just 15 minutes from Airport"
+        android:layout_marginTop="25dp"
+        android:text="Market is just 5 min on walk"
         app:layout_constraintStart_toEndOf="@+id/imageView14"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
@@ -197,7 +253,7 @@
         android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView12"
-        app:srcCompat="@drawable/img" />
+        app:srcCompat="@drawable/school" />
 
     <TextView
         android:id="@+id/textView25"
@@ -205,7 +261,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:layout_marginTop="25dp"
-        android:text="market in 5 minutes on walk"
+        android:text="School is in the society"
         app:layout_constraintStart_toEndOf="@+id/imageView13"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 

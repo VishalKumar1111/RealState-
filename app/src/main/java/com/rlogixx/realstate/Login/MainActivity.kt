@@ -74,14 +74,24 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val loginResponse = response.body()
 
+
                     // Check if loginResponse is not null
                     if (loginResponse != null) {
                         val userId = loginResponse.id
                         val userEmail = loginResponse.email
                         val accessToken = loginResponse.access_token
                         val status = loginResponse.status
+//                        val builder = AlertDialog.Builder(this@MainActivity)
+//                        builder.setTitle("Success")
+//                        builder.setMessage("Login Successful")
+//                        builder.setPositiveButton("OK") { dialog, which ->
+//                            // handle OK button click
+//                        }
+//                        val dialog = builder.create()
+//                        dialog.show()
 
-                         val intent:Intent = Intent(this@MainActivity,Home::class.java)
+
+                        val intent:Intent = Intent(this@MainActivity,Home::class.java)
                         startActivity(intent)
 //                        startActivity(Intent(this, Home::class.java))
 //                        Toast.makeText(this@MainActivity,userId,Toast.LENGTH_LONG).show()

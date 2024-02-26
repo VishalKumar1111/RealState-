@@ -39,10 +39,11 @@
         android:id="@+id/editTextText2"
         android:layout_width="333dp"
         android:layout_height="48dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Search"
+        android:hint="Search"
         app:layout_constraintStart_toStartOf="@+id/image_slider"
         app:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
@@ -52,20 +53,18 @@
         android:layout_height="38dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="26dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="@+id/image_slider"
         app:layout_constraintStart_toEndOf="@+id/editTextText2"
         app:layout_constraintTop_toBottomOf="@+id/image_slider"
-        app:srcCompat="@drawable/img_1" />
+        app:srcCompat="@drawable/filter" />
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="398dp"
+        android:layout_width="match_parent"
         android:layout_height="425dp"
         android:layout_margin="3dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="3dp"
-
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +72,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -83,10 +82,10 @@
                 android:layout_marginTop="61dp"
                 android:layout_marginEnd="43dp"
 
+                android:src="@drawable/pg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/pg" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -128,9 +127,9 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
 
+                android:src="@drawable/buy"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
-                android:src="@drawable/buy" />
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -150,10 +149,10 @@
                 android:layout_marginStart="54dp"
                 android:layout_marginTop="61dp"
 
+                android:src="@drawable/rent"
                 app:layout_constraintEnd_toEndOf="@+id/textView8"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/rent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -241,14 +240,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3 BHK"
-                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                tools:layout_editor_absoluteX="4dp"
-                tools:layout_editor_absoluteY="571dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/recyclerView3"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView3"
-                />
+                tools:layout_editor_absoluteX="4dp"
+                tools:layout_editor_absoluteY="571dp" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -270,15 +268,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/textView15"
-                />
-
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
     </ScrollView>
