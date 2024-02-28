@@ -26,9 +26,9 @@
 
     <ImageView
         android:id="@+id/imgcontact"
-        android:layout_width="33dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="72dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24"
@@ -36,27 +36,30 @@
 
     <EditText
         android:id="@+id/ed_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="313dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgcontact"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <EditText
         android:id="@+id/ed_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="313dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Contact"
         android:inputType="text"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/ed_contact"
         app:layout_constraintStart_toEndOf="@+id/img_phone"
         app:layout_constraintTop_toBottomOf="@+id/ed_contact" />
 
@@ -64,22 +67,22 @@
         android:id="@+id/img_phone"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/imgcontact"
         app:layout_constraintTop_toBottomOf="@+id/imgcontact"
         app:srcCompat="@drawable/phone" />
 
     <EditText
         android:id="@+id/ed_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_width="313dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Address"
         android:inputType="text"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/ed_phone"
         app:layout_constraintStart_toEndOf="@+id/img_home"
         app:layout_constraintTop_toBottomOf="@+id/ed_phone" />
 
@@ -87,22 +90,22 @@
         android:id="@+id/img_home"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="72dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/img_phone"
         app:layout_constraintTop_toBottomOf="@+id/img_phone"
         app:srcCompat="@drawable/home" />
 
     <EditText
         android:id="@+id/ed_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_width="313dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Address"
         android:inputType="text"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/ed_home"
         app:layout_constraintStart_toEndOf="@+id/img_search"
         app:layout_constraintTop_toBottomOf="@+id/ed_home" />
 
@@ -110,9 +113,8 @@
         android:id="@+id/img_search"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="22dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/img_home"
         app:layout_constraintTop_toBottomOf="@+id/img_home"
         app:srcCompat="@drawable/search" />
 
@@ -123,7 +125,7 @@
         android:layout_height="151dp"
         android:layout_marginStart="49dp"
 
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_choose"
@@ -134,7 +136,7 @@
         android:layout_width="151dp"
         android:layout_height="151dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/home_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView30" />
@@ -167,7 +169,7 @@
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="51dp"
         android:text=" Longitude | Latitude"
         android:textColor="@color/black"
