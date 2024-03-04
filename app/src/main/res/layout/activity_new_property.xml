@@ -9,16 +9,16 @@
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="#03A9F4"
+        android:layout_width="363dp"
+        android:layout_height="41dp"
         android:layout_margin="30dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="30dp"
-        android:textColor="@color/black"
+        android:background="#03A9F4"
         android:gravity="center"
         android:text="Raise a Request"
+        android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,92 +27,90 @@
     <ImageView
         android:id="@+id/imgcontact"
         android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="30dp"
+        android:layout_height="48dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView24"
         app:layout_constraintTop_toBottomOf="@+id/textView24"
         app:srcCompat="@drawable/user" />
 
     <EditText
-        android:id="@+id/ed_contact"
+        android:id="@+id/txtfldname"
         android:layout_width="313dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView24"
         app:layout_constraintStart_toEndOf="@+id/imgcontact"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <EditText
-        android:id="@+id/ed_phone"
+        android:id="@+id/txtfldcontact"
         android:layout_width="313dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Contact"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/ed_contact"
+        app:layout_constraintEnd_toEndOf="@+id/txtfldname"
         app:layout_constraintStart_toEndOf="@+id/img_phone"
-        app:layout_constraintTop_toBottomOf="@+id/ed_contact" />
+        app:layout_constraintTop_toBottomOf="@+id/txtfldname" />
 
     <ImageView
         android:id="@+id/img_phone"
         android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@+id/imgcontact"
         app:layout_constraintTop_toBottomOf="@+id/imgcontact"
         app:srcCompat="@drawable/phone" />
 
     <EditText
-        android:id="@+id/ed_home"
+        android:id="@+id/txtfldaddress"
         android:layout_width="313dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Address"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/ed_phone"
+        app:layout_constraintEnd_toEndOf="@+id/txtfldcontact"
         app:layout_constraintStart_toEndOf="@+id/img_home"
-        app:layout_constraintTop_toBottomOf="@+id/ed_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/txtfldcontact" />
 
     <ImageView
         android:id="@+id/img_home"
         android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@+id/img_phone"
         app:layout_constraintTop_toBottomOf="@+id/img_phone"
         app:srcCompat="@drawable/home" />
 
     <EditText
-        android:id="@+id/ed_search"
+        android:id="@+id/landmarknearby"
         android:layout_width="313dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Address"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/ed_home"
+        app:layout_constraintEnd_toEndOf="@+id/txtfldaddress"
         app:layout_constraintStart_toEndOf="@+id/img_search"
-        app:layout_constraintTop_toBottomOf="@+id/ed_home" />
+        app:layout_constraintTop_toBottomOf="@+id/txtfldaddress" />
 
     <ImageView
         android:id="@+id/img_search"
         android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@+id/img_home"
         app:layout_constraintTop_toBottomOf="@+id/img_home"
@@ -146,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:text=" Drop Image"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -169,16 +167,16 @@
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="51dp"
         android:text=" Longitude | Latitude"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_search" />
+        app:layout_constraintTop_toBottomOf="@+id/landmarknearby" />
 
     <ImageView
-        android:id="@+id/imageView19"
+        android:id="@+id/power"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="33dp"
@@ -188,101 +186,101 @@
         app:srcCompat="@drawable/power" />
 
     <ImageView
-        android:id="@+id/imageView24"
+        android:id="@+id/airport"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView19"
+        app:layout_constraintTop_toBottomOf="@+id/power"
         app:srcCompat="@drawable/onairport" />
 
     <ImageView
-        android:id="@+id/imageView25"
+        android:id="@+id/school"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView24"
-        app:layout_constraintStart_toEndOf="@+id/imageView24"
-        app:layout_constraintTop_toTopOf="@+id/imageView24"
+        app:layout_constraintBottom_toBottomOf="@+id/airport"
+        app:layout_constraintStart_toEndOf="@+id/airport"
+        app:layout_constraintTop_toTopOf="@+id/airport"
         app:srcCompat="@drawable/school" />
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/park"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView25"
-        app:layout_constraintStart_toEndOf="@+id/imageView25"
-        app:layout_constraintTop_toTopOf="@+id/imageView25"
+        app:layout_constraintBottom_toBottomOf="@+id/school"
+        app:layout_constraintStart_toEndOf="@+id/school"
+        app:layout_constraintTop_toTopOf="@+id/school"
         app:srcCompat="@drawable/park" />
 
     <ImageView
-        android:id="@+id/imageView27"
+        android:id="@+id/parking"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView26"
-        app:layout_constraintStart_toEndOf="@+id/imageView26"
-        app:layout_constraintTop_toTopOf="@+id/imageView26"
+        app:layout_constraintBottom_toBottomOf="@+id/park"
+        app:layout_constraintStart_toEndOf="@+id/park"
+        app:layout_constraintTop_toTopOf="@+id/park"
         app:srcCompat="@drawable/parking" />
 
     <ImageView
-        android:id="@+id/imageView28"
+        android:id="@+id/restaurant"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="42dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView27"
+        app:layout_constraintBottom_toBottomOf="@+id/parking"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView27"
-        app:layout_constraintTop_toTopOf="@+id/imageView27"
+        app:layout_constraintStart_toEndOf="@+id/parking"
+        app:layout_constraintTop_toTopOf="@+id/parking"
         app:srcCompat="@drawable/restorent" />
 
     <ImageView
-        android:id="@+id/imageView20"
+        android:id="@+id/water"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView19"
-        app:layout_constraintStart_toEndOf="@+id/imageView19"
-        app:layout_constraintTop_toTopOf="@+id/imageView19"
+        app:layout_constraintBottom_toBottomOf="@+id/power"
+        app:layout_constraintStart_toEndOf="@+id/power"
+        app:layout_constraintTop_toTopOf="@+id/power"
         app:srcCompat="@drawable/water1" />
 
     <ImageView
-        android:id="@+id/imageView21"
+        android:id="@+id/hospital"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView20"
-        app:layout_constraintStart_toEndOf="@+id/imageView20"
-        app:layout_constraintTop_toTopOf="@+id/imageView20"
+        app:layout_constraintBottom_toBottomOf="@+id/water"
+        app:layout_constraintStart_toEndOf="@+id/water"
+        app:layout_constraintTop_toTopOf="@+id/water"
         app:srcCompat="@drawable/offhospital" />
 
     <ImageView
-        android:id="@+id/imageView22"
+        android:id="@+id/metro"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView21"
-        app:layout_constraintStart_toEndOf="@+id/imageView21"
-        app:layout_constraintTop_toTopOf="@+id/imageView21"
+        app:layout_constraintBottom_toBottomOf="@+id/hospital"
+        app:layout_constraintStart_toEndOf="@+id/hospital"
+        app:layout_constraintTop_toTopOf="@+id/hospital"
         app:srcCompat="@drawable/metro" />
 
     <ImageView
-        android:id="@+id/imageView23"
+        android:id="@+id/gym"
         android:layout_width="51dp"
         android:layout_height="44dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="42dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView22"
+        app:layout_constraintBottom_toBottomOf="@+id/metro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView22"
-        app:layout_constraintTop_toTopOf="@+id/imageView22"
+        app:layout_constraintStart_toEndOf="@+id/metro"
+        app:layout_constraintTop_toTopOf="@+id/metro"
         app:srcCompat="@drawable/gym" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnsubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -293,7 +291,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView24" />
+        app:layout_constraintTop_toBottomOf="@+id/airport" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

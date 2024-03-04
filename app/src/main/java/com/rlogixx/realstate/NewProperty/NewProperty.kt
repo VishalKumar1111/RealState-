@@ -5,10 +5,14 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
+import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -26,10 +30,26 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.rlogixx.realstate.R
 import java.io.ByteArrayOutputStream
 
+import com.google.gson.JsonObject
+import com.rlogixx.realstate.API.ApiInterface
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClickListener {
     private var mGoogleMap: GoogleMap? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var imageView: ImageView
+
+    private var basicNeed: String = ""
+
+    private var latitude = ""
+    private var longitude = ""
+    private val arrBasicNeeds = mutableListOf<String>()
+    private lateinit var dict: MutableMap<String, String>
+    private var imageString: String? = null
+
 
 
     companion object {
@@ -40,11 +60,64 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         private const val GALLERY_REQUEST_CODE = 104
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_property)
+
+        val power = findViewById<ImageView>(R.id.power)
+        val water = findViewById<ImageView>(R.id.water)
+        val hospital = findViewById<ImageView>(R.id.hospital)
+        val metro = findViewById<ImageView>(R.id.metro)
+        val gym = findViewById<ImageView>(R.id.gym)
+        val airport = findViewById<ImageView>(R.id.airport)
+        val school = findViewById<ImageView>(R.id.school)
+        val park = findViewById<ImageView>(R.id.park)
+        val parking = findViewById<ImageView>(R.id.parking)
+        val restaurant = findViewById<ImageView>(R.id.restaurant)
+        val submit = findViewById<Button>(R.id.btnsubmit)
+        val name = findViewById<EditText>(R.id.txtfldname).text.toString()
+        val contact = findViewById<EditText>(R.id.txtfldcontact).text.toString()
+        val address = findViewById<EditText>(R.id.txtfldaddress).text.toString()
+        val landmark = findViewById<EditText>(R.id.landmarknearby).text.toString()
+
+
+        dict = mutableMapOf()
+
+        submit.setOnClickListener {
+            for (x in arrBasicNeeds) {
+                basicNeed = "$basicNeed$x,"
+            }
+
+            // Get data from EditText fields
+
+            // Update the dictionary with the data
+            dict["propertyname"] = name
+            dict["contact"] = contact
+            dict["propertylocation"] = address
+            dict["landmark"] = landmark
+            dict["longitude"] = longitude
+            dict["latitude"] = latitude
+            dict["pincode"] = "226021"
+            dict["basicneed"] = basicNeed.dropLast(1)
+            dict["imagestring"] = imageString ?: ""
+
+            // Print the list of selected basic needs
+            Log.d("Basic Needs", arrBasicNeeds.toString())
+
+            // Call function to post property data
+            callForPropertyData()
+        }
+
+        power.setOnClickListener { toggleBasicNeed(power, "Power") }
+        water.setOnClickListener { toggleBasicNeed(water, "Water") }
+        hospital.setOnClickListener { toggleBasicNeed(hospital, "Hospital") }
+        metro.setOnClickListener { toggleBasicNeed(metro, "Metro") }
+        gym.setOnClickListener { toggleBasicNeed(gym, "Gym") }
+        airport.setOnClickListener { toggleBasicNeed(airport, "Airport") }
+        school.setOnClickListener { toggleBasicNeed(school, "School") }
+        park.setOnClickListener { toggleBasicNeed(park, "Park") }
+        parking.setOnClickListener { toggleBasicNeed(parking, "Parking") }
+        restaurant.setOnClickListener { toggleBasicNeed(restaurant, "Restaurant") }
 
         imageView = findViewById(R.id.img_choose)
 
@@ -57,7 +130,22 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
-//IMAGEPICKER CODE
+
+    private fun toggleBasicNeed(imageView: ImageView, basicNeed: String) {
+        val isAdding = imageView.tag == null // Check if the tag is null, if yes, need to add the basic need
+        if (isAdding) {
+            imageView.setColorFilter(Color.BLUE) // Change border color to blue
+            imageView.tag = basicNeed // Set the tag to the basic need name
+            arrBasicNeeds.add(basicNeed)
+            Log.d("arrbasic", arrBasicNeeds.toString())
+        } else {
+            imageView.clearColorFilter() // Remove border color
+            imageView.tag = null // Remove the tag
+            arrBasicNeeds.remove(basicNeed)
+            Log.d("arrbasic", arrBasicNeeds.toString())
+        }
+    }
+
     private fun showImageOptionsDialog() {
         val options = arrayOf<CharSequence>("Camera", "Gallery", "Cancel")
 
@@ -72,6 +160,7 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         }
         builder.show()
     }
+
     private fun checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED
@@ -126,7 +215,8 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
                 GALLERY_REQUEST_CODE -> {
                     val selectedImage: Uri? = data?.data
                     imageView.setImageURI(selectedImage)
-                    val imageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, selectedImage)
+                    val imageBitmap =
+                        MediaStore.Images.Media.getBitmap(this.contentResolver, selectedImage)
                     encodeImage(imageBitmap)
                 }
             }
@@ -137,12 +227,9 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         val byteArrayOutputStream = ByteArrayOutputStream()
         imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
         val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
-        val encodedImage: String = Base64.encodeToString(byteArray, Base64.DEFAULT)
-        println("Base64 Image: $encodedImage")
+        imageString = Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
-
-//MAP VIEW CODE
     override fun onMapReady(googleMap: GoogleMap) {
         mGoogleMap = googleMap
         mGoogleMap?.setOnMapClickListener(this)
@@ -210,6 +297,9 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
             location?.let {
                 val currentLatLng = LatLng(it.latitude, it.longitude)
+                longitude = it.longitude.toString()
+                latitude = it.latitude.toString()
+
                 mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
             }
         }
@@ -220,10 +310,51 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         mGoogleMap?.addMarker(MarkerOptions().position(latlng))
     }
 
-//Imageview Selct From gallery
+    private fun callForPropertyData() {
 
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://rashitalk.com/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
+        val propertyService = retrofit.create(ApiInterface::class.java)
 
+        val propertyData = PropertyData(
 
+            propertyname = findViewById<EditText>(R.id.txtfldname).toString(),
+            contact = findViewById<EditText>(R.id.txtfldcontact).text.toString(),
+            propertylocation = findViewById<EditText>(R.id.txtfldaddress).text.toString(),
+            landmark = findViewById<EditText>(R.id.landmarknearby).text.toString(),
+            longitude = longitude.toDouble(),
+            latitude = latitude.toDouble(),
+            pincode = 226021,
+            basicneed = basicNeed.dropLast(1), // Remove the last comma
+            imagestring = imageString ?: ""
+        )
+        Log.d("propertyarray",propertyData.toString())
+
+        val call = propertyService.addProperty(propertyData)
+        call.enqueue(object : Callback<JsonObject> {
+            override fun onResponse(
+                call: Call<JsonObject>,
+                response: retrofit2.Response<JsonObject>
+            ) {
+                if (response.isSuccessful) {
+                    val jsonResponse = response.body()
+                    Log.d("Response", jsonResponse.toString())
+
+//                    val message = jsonResponse?.getString("message")
+//                    Toast.makeText(this@NewProperty, message, Toast.LENGTH_SHORT).show()
+                } else {
+                    Log.d("error post","not working")
+                    // Handle unsuccessful response
+                }
+            }
+
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                // Handle failure
+            }
+        })
+    }
 
 }
