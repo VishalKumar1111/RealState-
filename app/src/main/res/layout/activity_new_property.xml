@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#86E5E5EA"
     tools:context=".NewProperty.NewProperty">
 
 
@@ -89,9 +90,10 @@
         android:layout_width="40dp"
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
+
         app:layout_constraintStart_toStartOf="@+id/img_phone"
         app:layout_constraintTop_toBottomOf="@+id/img_phone"
-        app:srcCompat="@drawable/home" />
+        app:srcCompat="@drawable/home_new" />
 
     <EditText
         android:id="@+id/landmarknearby"
@@ -100,7 +102,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Address"
+        android:hint="Landmark Near By"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/txtfldaddress"
@@ -114,7 +116,7 @@
         android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@+id/img_home"
         app:layout_constraintTop_toBottomOf="@+id/img_home"
-        app:srcCompat="@drawable/search" />
+        app:srcCompat="@drawable/search_new" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"

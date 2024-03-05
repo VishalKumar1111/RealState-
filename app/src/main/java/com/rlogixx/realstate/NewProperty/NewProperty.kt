@@ -50,8 +50,6 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
     private lateinit var dict: MutableMap<String, String>
     private var imageString: String? = null
 
-
-
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1001
         private const val CAMERA_PERMISSION_REQUEST_CODE = 101
@@ -80,15 +78,12 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         val address = findViewById<EditText>(R.id.txtfldaddress).text.toString()
         val landmark = findViewById<EditText>(R.id.landmarknearby).text.toString()
 
-
         dict = mutableMapOf()
 
         submit.setOnClickListener {
             for (x in arrBasicNeeds) {
                 basicNeed = "$basicNeed$x,"
             }
-
-            // Get data from EditText fields
 
             // Update the dictionary with the data
             dict["propertyname"] = name
@@ -100,9 +95,6 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
             dict["pincode"] = "226021"
             dict["basicneed"] = basicNeed.dropLast(1)
             dict["imagestring"] = imageString ?: ""
-
-            // Print the list of selected basic needs
-            Log.d("Basic Needs", arrBasicNeeds.toString())
 
             // Call function to post property data
             callForPropertyData()
@@ -134,15 +126,13 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
     private fun toggleBasicNeed(imageView: ImageView, basicNeed: String) {
         val isAdding = imageView.tag == null // Check if the tag is null, if yes, need to add the basic need
         if (isAdding) {
-            imageView.setColorFilter(Color.BLUE) // Change border color to blue
+            imageView.setBackgroundResource(R.drawable.border_blue_shape) // Set blue border with radius
             imageView.tag = basicNeed // Set the tag to the basic need name
             arrBasicNeeds.add(basicNeed)
-            Log.d("arrbasic", arrBasicNeeds.toString())
         } else {
-            imageView.clearColorFilter() // Remove border color
+            imageView.setBackgroundColor(Color.TRANSPARENT) // Remove background color
             imageView.tag = null // Remove the tag
             arrBasicNeeds.remove(basicNeed)
-            Log.d("arrbasic", arrBasicNeeds.toString())
         }
     }
 
@@ -235,52 +225,66 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         mGoogleMap?.setOnMapClickListener(this)
 
         // Check and request location permission
+        checkLocationPermission()
+    }
+
+    override fun onMapClick(latlng: LatLng) {
+        // Add a marker on the clicked location
+        mGoogleMap?.addMarker(MarkerOptions().position(latlng))
+    }
+
+    private fun callForPropertyData() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://rashitalk.com/api/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val propertyService = retrofit.create(ApiInterface::class.java)
+
+        val propertyData = PropertyData(
+            propertyname = findViewById<EditText>(R.id.txtfldname).toString(),
+            contact = findViewById<EditText>(R.id.txtfldcontact).text.toString(),
+            propertylocation = findViewById<EditText>(R.id.txtfldaddress).text.toString(),
+            landmark = findViewById<EditText>(R.id.landmarknearby).text.toString(),
+            longitude = longitude.toString(),
+            latitude = latitude.toString(),
+            pincode = 226021,
+            basicneed = basicNeed.dropLast(1), // Remove the last comma
+            imagestring = imageString ?: ""
+        )
+
+        val call = propertyService.addProperty(propertyData)
+        call.enqueue(object : Callback<JsonObject> {
+            override fun onResponse(
+                call: Call<JsonObject>,
+                response: retrofit2.Response<JsonObject>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@NewProperty, "Successfully Send Data", Toast.LENGTH_SHORT).show()
+                } else {
+                    Log.d("error post", "not working")
+                    // Handle unsuccessful response
+                }
+            }
+
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                // Handle failure
+            }
+        })
+    }
+
+    private fun checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED
+            != PackageManager.PERMISSION_GRANTED
         ) {
-            // Permission already granted, enable location layer
-            enableMyLocation()
-        } else {
-            // Request location permission
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_PERMISSION_REQUEST_CODE
             )
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, enable location layer
-                enableMyLocation()
-            } else {
-                // Permission denied
-                Toast.makeText(
-                    this,
-                    "Location permission denied",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-
-        when (requestCode) {
-            CAMERA_PERMISSION_REQUEST_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    openCamera()
-                }
-            }
-            GALLERY_PERMISSION_REQUEST_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    openGallery()
-                }
-            }
+        } else {
+            // Location permission already granted
+            enableMyLocation()
         }
     }
 
@@ -305,56 +309,26 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         }
     }
 
-    override fun onMapClick(latlng: LatLng) {
-        // Add a marker on the clicked location
-        mGoogleMap?.addMarker(MarkerOptions().position(latlng))
-    }
-
-    private fun callForPropertyData() {
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://rashitalk.com/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val propertyService = retrofit.create(ApiInterface::class.java)
-
-        val propertyData = PropertyData(
-
-            propertyname = findViewById<EditText>(R.id.txtfldname).toString(),
-            contact = findViewById<EditText>(R.id.txtfldcontact).text.toString(),
-            propertylocation = findViewById<EditText>(R.id.txtfldaddress).text.toString(),
-            landmark = findViewById<EditText>(R.id.landmarknearby).text.toString(),
-            longitude = longitude.toDouble(),
-            latitude = latitude.toDouble(),
-            pincode = 226021,
-            basicneed = basicNeed.dropLast(1), // Remove the last comma
-            imagestring = imageString ?: ""
-        )
-        Log.d("propertyarray",propertyData.toString())
-
-        val call = propertyService.addProperty(propertyData)
-        call.enqueue(object : Callback<JsonObject> {
-            override fun onResponse(
-                call: Call<JsonObject>,
-                response: retrofit2.Response<JsonObject>
-            ) {
-                if (response.isSuccessful) {
-                    val jsonResponse = response.body()
-                    Log.d("Response", jsonResponse.toString())
-
-//                    val message = jsonResponse?.getString("message")
-//                    Toast.makeText(this@NewProperty, message, Toast.LENGTH_SHORT).show()
-                } else {
-                    Log.d("error post","not working")
-                    // Handle unsuccessful response
-                }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, enable location layer
+                enableMyLocation()
+            } else {
+                // Permission denied, show a message to the user
+                Toast.makeText(
+                    this,
+                    "Location permission denied. Some features may not be available.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
+        }
 
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                // Handle failure
-            }
-        })
+        // Handle other permission requests here...
     }
-
 }

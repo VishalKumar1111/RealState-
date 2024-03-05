@@ -5,8 +5,8 @@ data class PropertyData(
     val contact: String,
     val propertylocation: String,
     val landmark: String,
-    val longitude: Double,
-    val latitude: Double,
+    val longitude: String,
+    val latitude: String,
     val pincode: Int,
     val basicneed: String,
     val imagestring: String
