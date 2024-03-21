@@ -119,7 +119,16 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                // Handle failure (e.g., network error)
+                // Handle network failure
+                Log.e("loginerror", "Network failure: ${t.message}")
+
+                // Show error message to the user
+                val builder = AlertDialog.Builder(this@MainActivity)
+                builder.setTitle("Error")
+                builder.setMessage("Network Error. Please check your internet connection.")
+                builder.setPositiveButton("OK") { dialog, which -> }
+                val dialog = builder.create()
+                dialog.show()
             }
         })
     }

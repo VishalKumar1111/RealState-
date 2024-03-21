@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="363dp"
+        android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_margin="30dp"
         android:layout_marginStart="30dp"
@@ -22,6 +22,7 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,59 +30,68 @@
         android:id="@+id/imgcontact"
         android:layout_width="40dp"
         android:layout_height="48dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="@+id/textView24"
+        app:layout_constraintEnd_toStartOf="@+id/txtfldname"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24"
         app:srcCompat="@drawable/user" />
 
     <EditText
         android:id="@+id/txtfldname"
-        android:layout_width="313dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imgcontact"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
-    <EditText
-        android:id="@+id/txtfldcontact"
-        android:layout_width="313dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Contact"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/txtfldname"
-        app:layout_constraintStart_toEndOf="@+id/img_phone"
-        app:layout_constraintTop_toBottomOf="@+id/txtfldname" />
 
     <ImageView
         android:id="@+id/img_phone"
         android:layout_width="40dp"
         android:layout_height="48dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="@+id/imgcontact"
+        app:layout_constraintEnd_toStartOf="@+id/txtfldcontact"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgcontact"
         app:srcCompat="@drawable/phone" />
 
     <EditText
-        android:id="@+id/txtfldaddress"
-        android:layout_width="313dp"
+        android:id="@+id/txtfldcontact"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:hint="Contact"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_phone"
+        app:layout_constraintTop_toBottomOf="@+id/txtfldname" />
+
+    <EditText
+        android:id="@+id/txtfldaddress"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="Address"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/txtfldcontact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/img_home"
         app:layout_constraintTop_toBottomOf="@+id/txtfldcontact" />
 
@@ -89,23 +99,27 @@
         android:id="@+id/img_home"
         android:layout_width="40dp"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="30dp"
 
-        app:layout_constraintStart_toStartOf="@+id/img_phone"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/txtfldaddress"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_phone"
         app:srcCompat="@drawable/home_new" />
 
     <EditText
         android:id="@+id/landmarknearby"
-        android:layout_width="313dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="Landmark Near By"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/txtfldaddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/img_search"
         app:layout_constraintTop_toBottomOf="@+id/txtfldaddress" />
 
@@ -113,31 +127,37 @@
         android:id="@+id/img_search"
         android:layout_width="40dp"
         android:layout_height="48dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="@+id/img_home"
+        app:layout_constraintEnd_toStartOf="@+id/landmarknearby"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_home"
         app:srcCompat="@drawable/search_new" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="151dp"
+        android:layout_width="0dp"
         android:layout_height="151dp"
-        android:layout_marginStart="49dp"
 
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/img_choose"
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
     <ImageView
         android:id="@+id/img_choose"
-        android:layout_width="151dp"
+        android:layout_width="0dp"
         android:layout_height="151dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:src="@drawable/home_1"
+        app:layout_constraintEnd_toStartOf="@+id/map"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
@@ -170,19 +190,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="51dp"
         android:text=" Longitude | Latitude"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/map"
         app:layout_constraintTop_toBottomOf="@+id/landmarknearby" />
 
     <ImageView
         android:id="@+id/power"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="33dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/water"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView31"
         app:srcCompat="@drawable/power" />
@@ -191,8 +211,9 @@
         android:id="@+id/airport"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="33dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/school"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/power"
         app:srcCompat="@drawable/onairport" />
@@ -201,8 +222,9 @@
         android:id="@+id/school"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/airport"
+        app:layout_constraintEnd_toStartOf="@+id/park"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/airport"
         app:layout_constraintTop_toTopOf="@+id/airport"
         app:srcCompat="@drawable/school" />
@@ -211,8 +233,9 @@
         android:id="@+id/park"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/school"
+        app:layout_constraintEnd_toStartOf="@+id/parking"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/school"
         app:layout_constraintTop_toTopOf="@+id/school"
         app:srcCompat="@drawable/park" />
@@ -221,8 +244,9 @@
         android:id="@+id/parking"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/park"
+        app:layout_constraintEnd_toStartOf="@+id/restaurant"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/park"
         app:layout_constraintTop_toTopOf="@+id/park"
         app:srcCompat="@drawable/parking" />
@@ -231,10 +255,9 @@
         android:id="@+id/restaurant"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="42dp"
         app:layout_constraintBottom_toBottomOf="@+id/parking"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/parking"
         app:layout_constraintTop_toTopOf="@+id/parking"
         app:srcCompat="@drawable/restorent" />
@@ -243,8 +266,9 @@
         android:id="@+id/water"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/power"
+        app:layout_constraintEnd_toStartOf="@+id/hospital"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/power"
         app:layout_constraintTop_toTopOf="@+id/power"
         app:srcCompat="@drawable/water1" />
@@ -253,8 +277,9 @@
         android:id="@+id/hospital"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/water"
+        app:layout_constraintEnd_toStartOf="@+id/metro"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/water"
         app:layout_constraintTop_toTopOf="@+id/water"
         app:srcCompat="@drawable/offhospital" />
@@ -263,8 +288,9 @@
         android:id="@+id/metro"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/hospital"
+        app:layout_constraintEnd_toStartOf="@+id/gym"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/hospital"
         app:layout_constraintTop_toTopOf="@+id/hospital"
         app:srcCompat="@drawable/metro" />
@@ -273,10 +299,9 @@
         android:id="@+id/gym"
         android:layout_width="51dp"
         android:layout_height="44dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="42dp"
         app:layout_constraintBottom_toBottomOf="@+id/metro"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/metro"
         app:layout_constraintTop_toTopOf="@+id/metro"
         app:srcCompat="@drawable/gym" />

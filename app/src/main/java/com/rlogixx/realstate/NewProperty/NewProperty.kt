@@ -29,7 +29,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.rlogixx.realstate.R
 import java.io.ByteArrayOutputStream
-
 import com.google.gson.JsonObject
 import com.rlogixx.realstate.API.ApiInterface
 import retrofit2.Call
@@ -73,23 +72,42 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         val parking = findViewById<ImageView>(R.id.parking)
         val restaurant = findViewById<ImageView>(R.id.restaurant)
         val submit = findViewById<Button>(R.id.btnsubmit)
-        val name = findViewById<EditText>(R.id.txtfldname).text.toString()
-        val contact = findViewById<EditText>(R.id.txtfldcontact).text.toString()
-        val address = findViewById<EditText>(R.id.txtfldaddress).text.toString()
-        val landmark = findViewById<EditText>(R.id.landmarknearby).text.toString()
 
         dict = mutableMapOf()
 
         submit.setOnClickListener {
+            val phoneNumber = findViewById<EditText>(R.id.txtfldcontact).text.toString()
+            val name = findViewById<EditText>(R.id.txtfldname).text.toString()
+            val address = findViewById<EditText>(R.id.txtfldaddress).text.toString()
+
+            // Validate phone number
+            if (!isValidPhoneNumber(phoneNumber)) {
+                Toast.makeText(this, "Invalid phone number", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Validate name
+            if (name.isEmpty()) {
+                Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Validate address
+            if (address.isEmpty()) {
+                Toast.makeText(this, "Please enter your address", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // All fields are valid, proceed with form submission
             for (x in arrBasicNeeds) {
                 basicNeed = "$basicNeed$x,"
             }
 
             // Update the dictionary with the data
             dict["propertyname"] = name
-            dict["contact"] = contact
+            dict["contact"] = phoneNumber
             dict["propertylocation"] = address
-            dict["landmark"] = landmark
+            dict["landmark"] = findViewById<EditText>(R.id.landmarknearby).text.toString()
             dict["longitude"] = longitude
             dict["latitude"] = latitude
             dict["pincode"] = "226021"
@@ -330,5 +348,10 @@ class NewProperty : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMapClic
         }
 
         // Handle other permission requests here...
+    }
+
+    private fun isValidPhoneNumber(phoneNumber: String): Boolean {
+        // Implement your phone number validation logic here
+        return phoneNumber.length == 10 && phoneNumber.all { it.isDigit() }
     }
 }

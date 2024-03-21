@@ -1,18 +1,16 @@
 package com.rlogixx.realstate
 
 import android.content.Intent
-import com.rlogixx.realstate.API.ApiInterface
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.rlogixx.realstate.API.ApiInterface
 import com.rlogixx.realstate.Detail.DetailedActivity
 import com.rlogixx.realstate.NewProperty.NewProperty
 import com.rlogixx.realstate.Property.AdapterItem
@@ -119,12 +117,12 @@ class Home : AppCompatActivity() {
 
     private fun getAllData(){
 
-        var retrofit = Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
-        var retroData = retrofit.getPropertyData()
+        val retroData = retrofit.getPropertyData()
 
 
 
@@ -134,7 +132,7 @@ class Home : AppCompatActivity() {
                 call: Call<List<FlatDataItem>>,
                 response: Response<List<FlatDataItem>>
             ) {
-                var data = response.body()
+                val data = response.body()
 
 
                 if (data != null){
